@@ -3,6 +3,7 @@ import Collection from './component/Collection';
 import RicksMuseumApiWrapper from './modules/RijksMuseumApi';
 import Paginate from './component/Paginate';
 import { ArtObject } from '../types/RijksMuseumApi';
+import SearchBar from './component/SearchBar';
 
 function App() {
     const [painting, setPainting] = useState<ArtObject[]>([]);
@@ -22,6 +23,10 @@ function App() {
 
     return (
         <div className="container mx-auto p-4">
+            <h1 className="text-4xl font-bold text-center mb-8 text" style={{ fontFamily: 'RijksText' }}>
+                RIJKSMUSEUM Art Collection
+            </h1>
+            <SearchBar></SearchBar>
             {loading ? (
                 <div className="flex justify-center items-center h-screen">
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
@@ -40,6 +45,9 @@ function App() {
                     />
                 </>
             )}
+            <footer className="text-center mt-8">
+                <p className="text-gray-600">Powered by Rijksmuseum API</p>
+            </footer>
         </div>
     );
 }
