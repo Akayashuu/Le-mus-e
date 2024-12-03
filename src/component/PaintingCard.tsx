@@ -5,7 +5,7 @@ type Painting = {
     isPaysage: boolean;
 };
 
-function PaintingCard({ title, artist, image, isPaysage }: Painting) {
+function PaintingCard({ title, artist, image }: Painting) {
     return (
         <div className="flex">
             <div className="w-96 h-auto rounded overflow-hidden shadow-lg bg-white">
