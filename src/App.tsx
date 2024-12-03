@@ -13,9 +13,7 @@ function App() {
     useEffect(() => {
         async function fetchData() {
             setLoading(true);
-            const data = await RicksMuseumApiWrapper.load(
-                { itemPerPage: 100 }
-            );
+            const data = await RicksMuseumApiWrapper.load({ itemPerPage: 100 });
             setPainting(data.getArtObjects());
             setLoading(false);
         }
@@ -25,22 +23,22 @@ function App() {
     return (
         <div className="container mx-auto p-4">
             {loading ? (
-            <div className="flex justify-center items-center h-screen">
-                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
-            </div>
+                <div className="flex justify-center items-center h-screen">
+                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+                </div>
             ) : (
-            <>
-                <Collection
-                start={(page - 1) * ItemPerPage}
-                end={page * ItemPerPage}
-                data={painting}
-                />
-                <Paginate
-                currentPage={page}
-                maxPage={Math.ceil(painting.length / ItemPerPage)}
-                onPageChange={(page) => setPage(page)}
-                />
-            </>
+                <>
+                    <Collection
+                        start={(page - 1) * ItemPerPage}
+                        end={page * ItemPerPage}
+                        data={painting}
+                    />
+                    <Paginate
+                        currentPage={page}
+                        maxPage={Math.ceil(painting.length / ItemPerPage)}
+                        onPageChange={(page) => setPage(page)}
+                    />
+                </>
             )}
         </div>
     );
