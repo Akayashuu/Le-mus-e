@@ -1,7 +1,7 @@
 import { ArtObject, RijksMuseumApi } from '../../types/RijksMuseumApi';
 
 interface WrapperParams {
-    page?: `${number}-${number}`;
+    page?: number;
     itemPerPage?: number;
 }
 

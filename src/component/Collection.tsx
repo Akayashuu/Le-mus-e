@@ -2,8 +2,6 @@ import { ArtObject } from '../../types/RijksMuseumApi';
 import PaintingCard from './PaintingCard';
 
 function Collection({
-    start,
-    end,
     data,
 }: {
     start: number;
@@ -11,7 +9,7 @@ function Collection({
     data: ArtObject[];
 }) {
     // Extract the paginated range
-    const paginatedData = data.slice(start, end);
+    const paginatedData = data
 
     // Separate paintings into landscape and portrait
     const landscapeItems = paginatedData.filter(

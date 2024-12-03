@@ -6,7 +6,7 @@ import { ArtObject } from '../types/RijksMuseumApi';
 import SearchBar from './component/SearchBar';
 
 function App() {
-    const [painting, setPainting] = useState<ArtObject[]>([]);
+    const [cache, setCache] = useState<Map<number, ArtObject[]>>(new Map());
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
     const ItemPerPage = 12;
@@ -14,16 +14,37 @@ function App() {
     useEffect(() => {
         async function fetchData() {
             setLoading(true);
-            const data = await RicksMuseumApiWrapper.load({ itemPerPage: 100 });
-            setPainting(data.getArtObjects());
+            await loadNextPages(page);
             setLoading(false);
         }
         fetchData();
     }, []);
 
+    const loadNextPages = async (startPage: number) => {
+        for (let i = 0; i < 3; i++) {
+            const nextPage = startPage + i;
+            if (!cache.has(nextPage)) {
+                const data = await RicksMuseumApiWrapper.load({
+                    page: nextPage,
+                    itemPerPage: 12,
+                });
+                setCache(
+                    (prevCache) =>
+                        new Map([
+                            ...prevCache,
+                            [nextPage, data.getArtObjects()],
+                        ])
+                );
+            }
+        }
+    };
+
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-4xl font-bold text-center mb-8 text" style={{ fontFamily: 'RijksText' }}>
+            <h1
+                className="text-4xl font-bold text-center mb-8 text"
+                style={{ fontFamily: 'RijksText' }}
+            >
                 RIJKSMUSEUM Art Collection
             </h1>
             <SearchBar></SearchBar>
@@ -33,15 +54,21 @@ function App() {
                 </div>
             ) : (
                 <>
-                    <Collection
-                        start={(page - 1) * ItemPerPage}
-                        end={page * ItemPerPage}
-                        data={painting}
-                    />
+                    {cache.has(page) && (
+                        <Collection
+                            start={(page - 1) * ItemPerPage + 1}
+                            end={page * ItemPerPage}
+                            data={cache.get(page) || []}
+                        />
+                    )}
                     <Paginate
                         currentPage={page}
-                        maxPage={Math.ceil(painting.length / ItemPerPage)}
-                        onPageChange={(page) => setPage(page)}
+                        maxPage={Math.ceil(10000 / ItemPerPage)}
+                        onPageChange={async (page) => {
+                            setPage(page);
+                            const nextPage = page + 1;
+                            await loadNextPages(nextPage);
+                        }}
                     />
                 </>
             )}
