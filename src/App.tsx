@@ -7,7 +7,7 @@ import { ArtObject } from '../types/RijksMuseumApi';
 function App() {
     const [painting, setPainting] = useState<ArtObject[]>([]);
     const [page, setPage] = useState(1);
-    const ItemPerPage = 10;
+    const ItemPerPage = 12;
 
     useEffect(() => {
         async function fetchData() {
