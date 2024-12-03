@@ -1,4 +1,4 @@
-export interface RicksMuseumApi {
+export interface RijksMuseumApi {
     elapsedMilliseconds: number;
     count: number;
     countFacets: CountFacets;
