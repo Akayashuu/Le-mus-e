@@ -2,9 +2,10 @@ type Painting = {
     title: string;
     artist: string;
     image: string;
+    isPaysage: boolean;
 };
 
-function PaintingCard({ title, artist, image }: Painting) {
+function PaintingCard({ title, artist, image, isPaysage }: Painting) {
     return (
         <div className="flex">
             <div className="w-96 h-auto rounded overflow-hidden shadow-lg bg-white">
@@ -14,10 +15,10 @@ function PaintingCard({ title, artist, image }: Painting) {
                     alt={title}
                 />
                 <div className="py-2 px-2">
-                    <div className="font-bold text-xl mb-1 break-words">
+                    <div className="font-bold text-xl mb-1 break-words" style={{ fontFamily: 'RijksText' }}>
                         {title}
                     </div>
-                    <p className="text-gray-700 text-base break-words">
+                    <p className="text-gray-700 text-base break-words" style={{ fontFamily: 'RijksText' }}>
                         {artist}
                     </p>
                 </div>
