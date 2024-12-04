@@ -42,6 +42,7 @@ function Collection({
                                 ? item.webImage.url
                                 : NOT_FOUND
                         }
+                        data={item}
                         isLandscape
                     />
                 ))}
@@ -56,6 +57,7 @@ function Collection({
                         artist={item.principalOrFirstMaker}
                         image={item.webImage ? item.webImage.url : NOT_FOUND}
                         isLandscape={false}
+                        data={item}
                     />
                 ))}
             </div>
