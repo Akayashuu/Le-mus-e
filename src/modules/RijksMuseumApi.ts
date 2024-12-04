@@ -48,24 +48,6 @@ class RijksMuseumApiWrapper {
         return this.api!.artObjects.find((artObject) => artObject.id === id);
     }
 
-    public getArtObjectsByPage(page: number, itemPerPage: number): ArtObject[] {
-        this.ensureApiLoaded();
-        const start = (page - 1) * itemPerPage;
-        const end = page * itemPerPage;
-        return this.api!.artObjects.slice(start, end);
-    }
-
-    public getTotalPage(itemPerPage: number): number {
-        this.ensureApiLoaded();
-        return Math.ceil(this.api!.artObjects.length / itemPerPage);
-    }
-
-    public getArtObjectsByMaker(maker: string): ArtObject[] {
-        this.ensureApiLoaded();
-        return this.api!.artObjects.filter(
-            (artObject) => artObject.principalOrFirstMaker === maker
-        );
-    }
 }
 
 export default RijksMuseumApiWrapper;

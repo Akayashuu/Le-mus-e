@@ -20,7 +20,7 @@ function PaintingCard({ title, artist, image, isLandscape, data }: Painting) {
 
     return (
         <>
-            <div className="flex" onClick={handleCardClick}>
+            <div className="relative flex" onClick={handleCardClick}>
                 <div className="w-full h-auto rounded overflow-hidden shadow-lg bg-white">
                     <img
                         className={`w-full h-auto object-cover ${
@@ -29,15 +29,15 @@ function PaintingCard({ title, artist, image, isLandscape, data }: Painting) {
                         src={image}
                         alt={title}
                     />
-                    <div className="py-2 px-2">
+                    <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-2">
                         <div
-                            className="font-bold text-xl mb-1 break-words text-black"
+                            className="font-bold text-xl mb-1 break-words"
                             style={{ fontFamily: 'RijksCyrillicText' }}
                         >
                             {title}
                         </div>
                         <p
-                            className="text-gray-700 text-base break-words"
+                            className="text-base break-words"
                             style={{ fontFamily: 'RijksCyrillicText' }}
                         >
                             {artist}

@@ -21,6 +21,7 @@ function ModalDisplay({
         <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
             onClick={handleClose}
+            style={{ zIndex: 1000 }}
         >
             <div className="bg-transparent rounded-lg shadow-lg p-6 relative max-w-3xl w-full">
                 <button
