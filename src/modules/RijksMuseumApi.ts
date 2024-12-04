@@ -1,13 +1,13 @@
 import { ArtObject, RijksMuseumApi } from '../../types/RijksMuseumApi';
-
 interface WrapperParams {
     page?: number;
     itemPerPage?: number;
+    search?: string;
 }
 
 
 class RijksMuseumApiWrapper {
-    private apiKey: string = '8QQ9KcWz';
+    private apiKey: string = import.meta.env.VITE_API_RIJKS || '';
     private endpoint: string = 'https://www.rijksmuseum.nl/api/en/collection';
     constructor(private api: RijksMuseumApi | null = null) {}
 
@@ -24,6 +24,9 @@ class RijksMuseumApiWrapper {
         }
         if (opts.itemPerPage) {
             link += `&ps=${opts.itemPerPage}`;
+        }
+        if (opts.search) {
+            link += `&q=${opts.search}`;
         }
         const response = await fetch(link);
         this.api = await response.json();
