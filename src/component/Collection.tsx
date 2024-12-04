@@ -11,7 +11,7 @@ function Collection({
     data: ArtObject[];
 }) {
     const paginatedData = data;
-    if (paginatedData.length === 0) {
+    if (!paginatedData || paginatedData.length === 0) {
         return (
             <div className="flex justify-center items-center h-full bg-black">
                 <div className="text-center">

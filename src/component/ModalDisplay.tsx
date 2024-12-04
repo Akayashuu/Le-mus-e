@@ -23,7 +23,7 @@ function ModalDisplay({
             onClick={handleClose}
             style={{ zIndex: 1000 }}
         >
-            <div className="bg-transparent rounded-lg shadow-lg p-6 relative max-w-3xl w-full">
+            <div className="bg-transparent rounded-lg shadow-lg p-6 relative max-w-3xl w-full max-h-screen overflow-y-auto">
                 <button
                     className="absolute top-2 right-2 text-white hover:text-gray-300"
                     onClick={() => setOpenModal(false)}
@@ -34,7 +34,7 @@ function ModalDisplay({
                     <img
                         src={data.webImage.url}
                         alt={data.title}
-                        className="w-full h-auto rounded"
+                        className="w-full h-auto max-w-full max-h-screen object-contain rounded"
                         onClick={handleClose}
                     />
                 </div>

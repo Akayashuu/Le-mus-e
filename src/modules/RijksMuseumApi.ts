@@ -1,5 +1,5 @@
 import { ArtObject, RijksMuseumApi } from '../../types/RijksMuseumApi';
-interface WrapperParams {
+export interface WrapperParams {
     page?: number;
     itemPerPage?: number;
     search?: string;
@@ -7,7 +7,7 @@ interface WrapperParams {
 
 
 class RijksMuseumApiWrapper {
-    private apiKey: string = import.meta.env.VITE_API_RIJKS || '';
+    private apiKey: string = process.env.VITE_API_RIJKS || '';
     private endpoint: string = 'https://www.rijksmuseum.nl/api/en/collection';
     constructor(private api: RijksMuseumApi | null = null) {}
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Collection from './component/Collection';
-import RicksMuseumApiWrapper from './modules/RijksMuseumApi';
 import Paginate from './component/Paginate';
 import { ArtObject } from '../types/RijksMuseumApi';
 import SearchBar from './component/SearchBar';
@@ -31,11 +30,9 @@ function App() {
         for (let i = 0; i < 3; i++) {
             const nextPage = startPage + i;
             if (!pageCache.has(nextPage)) {
-                const data = await RicksMuseumApiWrapper.load({
-                    page: nextPage,
-                    itemPerPage: ItemPerPage,
-                });
-                setPageCache((map) => map.set(nextPage, data.getArtObjects()));
+                const ApiUrl = `/.netlify/functions/get-rijks?page=${nextPage}&itemPerPage=${ItemPerPage}`;
+                const data = await fetch(ApiUrl).then((res) => res.json());
+                setPageCache((map) => map.set(nextPage, data.data));
             }
         }
     };
@@ -49,11 +46,10 @@ function App() {
             setCurrentData(searchCache.get(key) || []);
             return;
         }
-        const data = await RicksMuseumApiWrapper.load({
-            search: key,
-        });
-        setSearchCache((map) => map.set(key, data.getArtObjects()));
-        setCurrentData(data.getArtObjects());
+        const ApiUrl = `/.netlify/functions/get-rijks?search=${key}`;
+        const data = await fetch(ApiUrl).then((res) => res.json());
+        setSearchCache((map) => map.set(key, data.data));
+        setCurrentData(data.data);
     };
 
     return (
