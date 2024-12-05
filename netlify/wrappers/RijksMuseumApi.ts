@@ -48,6 +48,8 @@ class RijksMuseumApiWrapper {
         return this.api!.artObjects.find((artObject) => artObject.id === id);
     }
 
+    
+
 }
 
 export default RijksMuseumApiWrapper;

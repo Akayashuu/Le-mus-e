@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ArtObject } from '../../types/RijksMuseumApi';
 
 function ModalDisplay({
@@ -9,6 +10,26 @@ function ModalDisplay({
     isOpen: boolean;
     setOpenModal: (isOpen: boolean) => void;
 }) {
+    const [detail, setDetail] = useState<unknown | null>(null);
+    useEffect(() => {
+        async function fetchData() {
+            const details = await fetch(
+                `/.netlify/functions/get-rijks-detail?object-number=${data.objectNumber}`
+            ).then((res) => res.json());
+            setDetail(details.data);
+        }
+        fetchData();
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setOpenModal(false);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
     if (!isOpen) return null;
 
     const handleClose = (e: React.MouseEvent) => {
@@ -34,12 +55,14 @@ function ModalDisplay({
                     <img
                         src={data.webImage.url}
                         alt={data.title}
-                        className="w-full h-auto max-w-full max-h-screen object-contain rounded"
+                        className="w-full h-auto max-w-full max-h-96 object-contain rounded"
                         onClick={handleClose}
                     />
                 </div>
                 <div className="mt-4">
-                    <h2 className="text-2xl font-bold text-white">{data.title}</h2>
+                    <h2 className="text-2xl font-bold text-white">
+                        {data.title}
+                    </h2>
                     <p className="mt-2 text-white">{data.longTitle}</p>
                 </div>
             </div>

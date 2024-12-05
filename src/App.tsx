@@ -65,7 +65,7 @@ function App() {
                 >
                     RIJKSMUSEUM Art Collection
                 </h1>
-                <p className="text-center text-lg text-gray-700">
+                <p className="text-center text-lg text-gray-400">
                     Discover a curated selection of art from the Rijksmuseum
                 </p>
             </header>

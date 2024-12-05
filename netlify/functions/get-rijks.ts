@@ -1,6 +1,6 @@
 import RijksMuseumApiWrapper, {
     WrapperParams,
-} from '../../src/modules/RijksMuseumApi';
+} from '../wrappers/RijksMuseumApi';
 
 export default async (request: Request) => {
     const url = new URL(request.url);
@@ -22,6 +22,7 @@ export default async (request: Request) => {
     return new Response(
         JSON.stringify({
             data: api.getArtObjects(),
+            statusCode: 200,
         }),
         {
             headers: { 'Content-Type': 'application/json' },
