@@ -5,19 +5,18 @@ export interface WrapperParams {
     search?: string;
 }
 
-
 class RijksMuseumApiWrapper {
     private apiKey: string = process.env.VITE_API_RIJKS || '';
     private endpoint: string = 'https://www.rijksmuseum.nl/api/en/collection';
     constructor(private api: RijksMuseumApi | null = null) {}
 
-    static async load(opts:WrapperParams) {
+    static async load(opts: WrapperParams) {
         const api = new RijksMuseumApiWrapper();
         await api.fetchApi(opts);
         return api;
     }
 
-    public async fetchApi(opts:WrapperParams): Promise<void> {
+    public async fetchApi(opts: WrapperParams): Promise<void> {
         let link = `${this.endpoint}?key=${this.apiKey}`;
         if (opts.page) {
             link += `&p=${opts.page}`;
@@ -47,9 +46,6 @@ class RijksMuseumApiWrapper {
         this.ensureApiLoaded();
         return this.api!.artObjects.find((artObject) => artObject.id === id);
     }
-
-    
-
 }
 
 export default RijksMuseumApiWrapper;

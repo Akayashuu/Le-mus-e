@@ -1,11 +1,12 @@
-import RijksMuseumDetailWrapper from "../wrappers/RijksMuseumDetailWrapper";
+import RijksMuseumDetailWrapper from '../wrappers/RijksMuseumDetailWrapper';
 
 export default async (request: Request) => {
     const url = new URL(request.url);
     const params = {
-        'object-number': url.searchParams.get('object-number')
-    }
-    const api = await RijksMuseumDetailWrapper.load(params['object-number']!)
+        'object-number': url.searchParams.get('object-number'),
+    };
+    const api = await RijksMuseumDetailWrapper.load(params['object-number']!);
+    console.log(api.getDetails());
     return new Response(
         JSON.stringify({
             data: api.getDetails(),

@@ -588,10 +588,6 @@ video {
   }
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -937,29 +933,19 @@ video {
   color: rgb(59 130 246 / var(--tw-text-opacity, 1));
 }
 
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+}
+
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
-.text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-gray-200 {
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity, 1));
-}
-
-.text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
 .shadow-lg {
@@ -987,7 +973,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal.woff')
             format('woff');
@@ -1002,7 +989,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold.woff')
             format('woff');
@@ -1017,7 +1005,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic.woff')
             format('woff');
@@ -1032,7 +1021,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic.woff')
             format('woff');
@@ -1047,7 +1037,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal-ukrainian-cyrillic.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal-ukrainian-cyrillic.woff')
             format('woff');
@@ -1062,7 +1053,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold-ukrainian-cyrillic.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold-ukrainian-cyrillic.woff')
             format('woff');
@@ -1077,7 +1069,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic-ukrainian-cyrillic.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic-ukrainian-cyrillic.woff')
             format('woff');
@@ -1092,7 +1085,8 @@ video {
 
   font-display: swap;
 
-  src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic-ukrainian-cyrillic.woff2')
+  src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic-ukrainian-cyrillic.woff')
             format('woff');

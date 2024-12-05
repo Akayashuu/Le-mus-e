@@ -38,7 +38,7 @@ function App() {
         }
     };
 
-    const onSearch = async (key: string, page:number) => {
+    const onSearch = async (key: string, page: number) => {
         if (key === '') {
             setPage(1);
             setCurrentData(pageCache.get(page) || []);
@@ -70,7 +70,7 @@ function App() {
                 </p>
             </header>
             <main className="space-y-12">
-                <SearchBar onChange={onSearch}  page={page}/>
+                <SearchBar onChange={onSearch} page={page} />
                 {loading ? (
                     <div className="flex justify-center items-center h-64">
                         <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
@@ -99,10 +99,18 @@ function App() {
                                     }
                                     setCurrentData(pageCache.get(page) || []);
                                 } else {
-                                    if (!searchCache.has(`${currentSearch}-${page}`)) {
+                                    if (
+                                        !searchCache.has(
+                                            `${currentSearch}-${page}`
+                                        )
+                                    ) {
                                         await onSearch(currentSearch, page);
                                     } else {
-                                        setCurrentData(searchCache.get(`${currentSearch}-${page}`) || []);
+                                        setCurrentData(
+                                            searchCache.get(
+                                                `${currentSearch}-${page}`
+                                            ) || []
+                                        );
                                     }
                                 }
                             }}
@@ -115,7 +123,6 @@ function App() {
             </footer>
         </div>
     );
-    
 }
 
 export default App;

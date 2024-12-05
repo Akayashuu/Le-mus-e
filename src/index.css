@@ -7,7 +7,8 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal.woff')
             format('woff');
@@ -17,7 +18,8 @@
     font-weight: bold;
     font-style: normal;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold.woff')
             format('woff');
@@ -27,7 +29,8 @@
     font-weight: normal;
     font-style: italic;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic.woff')
             format('woff');
@@ -37,7 +40,8 @@
     font-weight: bold;
     font-style: italic;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic.woff')
             format('woff');
@@ -47,7 +51,8 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal-ukrainian-cyrillic.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Normal-ukrainian-cyrillic.woff')
             format('woff');
@@ -57,7 +62,8 @@
     font-weight: bold;
     font-style: normal;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold-ukrainian-cyrillic.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Bold-ukrainian-cyrillic.woff')
             format('woff');
@@ -67,7 +73,8 @@
     font-weight: normal;
     font-style: italic;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic-ukrainian-cyrillic.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-Italic-ukrainian-cyrillic.woff')
             format('woff');
@@ -77,7 +84,8 @@
     font-weight: bold;
     font-style: italic;
     font-display: swap;
-    src: url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic-ukrainian-cyrillic.woff2')
+    src:
+        url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic-ukrainian-cyrillic.woff2')
             format('woff2'),
         url('https://www.rijksmuseum.nl/statics/fonts/Rijksmuseum-BoldItalic-ukrainian-cyrillic.woff')
             format('woff');

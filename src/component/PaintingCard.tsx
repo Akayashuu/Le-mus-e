@@ -14,7 +14,7 @@ function PaintingCard({ title, artist, image, isLandscape, data }: Painting) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleCardClick = () => {
-        if(isModalOpen) setIsModalOpen(false);
+        if (isModalOpen) setIsModalOpen(false);
         setIsModalOpen(true);
     };
 
@@ -24,7 +24,9 @@ function PaintingCard({ title, artist, image, isLandscape, data }: Painting) {
                 <div className="w-full h-auto rounded overflow-hidden shadow-lg bg-white">
                     <img
                         className={`w-full h-auto object-cover ${
-                            isLandscape ? 'max-h-60 min-h-60' : 'max-h-96 min-h-96'
+                            isLandscape
+                                ? 'max-h-60 min-h-60'
+                                : 'max-h-96 min-h-96'
                         }`}
                         src={image}
                         alt={title}
@@ -47,12 +49,11 @@ function PaintingCard({ title, artist, image, isLandscape, data }: Painting) {
             </div>
 
             {isModalOpen && (
-                <ModalDisplay 
+                <ModalDisplay
                     data={data}
                     isOpen={isModalOpen}
                     setOpenModal={setIsModalOpen}
-                >
-                </ModalDisplay>
+                ></ModalDisplay>
             )}
         </>
     );

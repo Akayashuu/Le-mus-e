@@ -3,7 +3,7 @@ function SearchBar({
     page,
 }: {
     page: number;
-    onChange: (key: string, page:number) => void;
+    onChange: (key: string, page: number) => void;
 }) {
     return (
         <div className="flex justify-center items-center mt-4">

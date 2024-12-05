@@ -1,13 +1,10 @@
-
 class RijksMuseumDetailWrapper {
     private apiKey: string = process.env.VITE_API_RIJKS || '';
     private endpoint: string = 'https://www.rijksmuseum.nl/api/en/collection';
     private details: unknown;
     constructor(private key: string) {}
 
-    static async load(
-        objectNumber: string,
-    ) {
+    static async load(objectNumber: string) {
         const wrapper = new RijksMuseumDetailWrapper(objectNumber);
         await wrapper.fetchApi();
         return wrapper;
