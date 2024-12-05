@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArtObject } from '../../types/RijksMuseumApi';
+import { RijksMuseumApiDetails } from '../../types/RijksMuseumApiDetails';
 
 function ModalDisplay({
     data,
@@ -10,7 +11,7 @@ function ModalDisplay({
     isOpen: boolean;
     setOpenModal: (isOpen: boolean) => void;
 }) {
-    const [detail, setDetail] = useState<unknown | null>(null);
+    const [, setDetail] = useState<RijksMuseumApiDetails | null>(null);
     useEffect(() => {
         async function fetchData() {
             const details = await fetch(
@@ -37,7 +38,6 @@ function ModalDisplay({
             setOpenModal(false);
         }
     };
-
     return (
         <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
@@ -55,7 +55,7 @@ function ModalDisplay({
                     <img
                         src={data.webImage.url}
                         alt={data.title}
-                        className="w-full h-auto max-w-full max-h-96 object-contain rounded"
+                        className="w-full h-auto max-w-full max-h-[500px] object-contain rounded"
                         onClick={handleClose}
                     />
                 </div>

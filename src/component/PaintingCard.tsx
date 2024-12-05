@@ -21,7 +21,7 @@ function PaintingCard({ title, artist, image, isLandscape, data }: Painting) {
     return (
         <>
             <div className="relative flex" onClick={handleCardClick}>
-                <div className="w-full h-auto rounded overflow-hidden shadow-lg bg-white">
+                <div className="w-full h-auto rounded overflow-hidden shadow-lg bg-white transform transition-transform duration-300 hover:scale-105">
                     <img
                         className={`w-full h-auto object-cover ${
                             isLandscape
