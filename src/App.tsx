@@ -20,15 +20,18 @@ function App() {
     useEffect(() => {
         async function fetchData() {
             setLoading(true);
-            await loadNextPages(page);
+            const ApiUrl = `/.netlify/functions/get-rijks?page=${1}&itemPerPage=${ItemPerPage}`;
+            const data = await fetch(ApiUrl).then((res) => res.json());
+            setPageCache((map) => map.set(1, data.data));
             setLoading(false);
             setCurrentData(pageCache.get(1) || []);
+            await loadNextPages(page);
         }
         fetchData();
     }, []);
 
     const loadNextPages = async (startPage: number) => {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 20; i++) {
             const nextPage = startPage + i;
             if (!pageCache.has(nextPage)) {
                 const ApiUrl = `/.netlify/functions/get-rijks?page=${nextPage}&itemPerPage=${ItemPerPage}`;
