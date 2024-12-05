@@ -11,7 +11,7 @@ function ModalDisplay({
     isOpen: boolean;
     setOpenModal: (isOpen: boolean) => void;
 }) {
-    const [, setDetail] = useState<RijksMuseumApiDetails | null>(null);
+    const [detail, setDetail] = useState<RijksMuseumApiDetails | null>(null);
     useEffect(() => {
         async function fetchData() {
             const details = await fetch(
@@ -64,6 +64,7 @@ function ModalDisplay({
                         {data.title}
                     </h2>
                     <p className="mt-2 text-white">{data.longTitle}</p>
+                    <p className="mt-2 text-white">{detail?.artObject.description}</p>
                 </div>
             </div>
         </div>
