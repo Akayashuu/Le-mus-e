@@ -90,9 +90,9 @@ function App() {
                         )}
                         <Paginate
                             currentPage={page}
-                            maxPage={Math.ceil(10000 / ItemPerPage)}
                             onPageChange={async (page) => {
                                 setPage(page);
+                                console.log(page);
                                 if (currentSearch === '') {
                                     if (!pageCache.has(page)) {
                                         await loadNextPages(page);
