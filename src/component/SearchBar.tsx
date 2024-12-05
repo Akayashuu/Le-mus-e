@@ -1,7 +1,9 @@
 function SearchBar({
     onChange,
+    page,
 }: {
-    onChange: (key: string) => void;
+    page: number;
+    onChange: (key: string, page:number) => void;
 }) {
     return (
         <div className="flex justify-center items-center mt-4">
@@ -9,7 +11,7 @@ function SearchBar({
                 type="text"
                 className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Search..."
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(e) => onChange(e.target.value, page)}
             />
         </div>
     );

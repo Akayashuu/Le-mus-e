@@ -11,6 +11,7 @@ function App() {
     const [searchCache, setSearchCache] = useState<Map<string, ArtObject[]>>(
         new Map()
     );
+    const [currentSearch, setCurrentSearch] = useState('');
     const [currentData, setCurrentData] = useState<ArtObject[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
@@ -37,19 +38,22 @@ function App() {
         }
     };
 
-    const onSearch = async (key: string) => {
+    const onSearch = async (key: string, page:number) => {
         if (key === '') {
+            setPage(1);
             setCurrentData(pageCache.get(page) || []);
+            setCurrentSearch('');
             return;
         }
-        if (searchCache.has(key)) {
-            setCurrentData(searchCache.get(key) || []);
+        if (searchCache.has(`${key}-${page}`)) {
+            setCurrentData(searchCache.get(`${key}-${page}`) || []);
             return;
         }
-        const ApiUrl = `/.netlify/functions/get-rijks?search=${key}`;
+        const ApiUrl = `/.netlify/functions/get-rijks?search=${key}&page=${page}`;
         const data = await fetch(ApiUrl).then((res) => res.json());
-        setSearchCache((map) => map.set(key, data.data));
+        setSearchCache((map) => map.set(`${key}-${page}`, data.data));
         setCurrentData(data.data);
+        setCurrentSearch(key);
     };
 
     return (
@@ -66,14 +70,14 @@ function App() {
                 </p>
             </header>
             <main className="space-y-12">
-                <SearchBar onChange={onSearch} />
+                <SearchBar onChange={onSearch}  page={page}/>
                 {loading ? (
                     <div className="flex justify-center items-center h-64">
                         <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
                     </div>
                 ) : (
                     <div className="space-y-12">
-                        {pageCache.has(page) ? (
+                        {currentData.length > 0 ? (
                             <Collection
                                 start={(page - 1) * ItemPerPage + 1}
                                 end={page * ItemPerPage}
@@ -89,10 +93,18 @@ function App() {
                             maxPage={Math.ceil(10000 / ItemPerPage)}
                             onPageChange={async (page) => {
                                 setPage(page);
-                                if (!pageCache.has(page)) {
-                                    await loadNextPages(page + 1);
+                                if (currentSearch === '') {
+                                    if (!pageCache.has(page)) {
+                                        await loadNextPages(page);
+                                    }
+                                    setCurrentData(pageCache.get(page) || []);
+                                } else {
+                                    if (!searchCache.has(`${currentSearch}-${page}`)) {
+                                        await onSearch(currentSearch, page);
+                                    } else {
+                                        setCurrentData(searchCache.get(`${currentSearch}-${page}`) || []);
+                                    }
                                 }
-                                setCurrentData(pageCache.get(page) || []);
                             }}
                         />
                     </div>
