@@ -1,7 +1,8 @@
+import { RijksMuseumApiDetails } from './../../types/RijksMuseumApiDetails';
 class RijksMuseumDetailWrapper {
     private apiKey: string = process.env.VITE_API_RIJKS || '';
     private endpoint: string = 'https://www.rijksmuseum.nl/api/en/collection';
-    private details: unknown;
+    private details!: RijksMuseumApiDetails;
     constructor(private key: string) {}
 
     static async load(objectNumber: string) {
@@ -22,7 +23,7 @@ class RijksMuseumDetailWrapper {
         }
     }
 
-    public getDetails(): unknown {
+    public getDetails(): RijksMuseumApiDetails {
         this.ensureApiLoaded();
         return this.details;
     }

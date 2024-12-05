@@ -6,7 +6,6 @@ export default async (request: Request) => {
         'object-number': url.searchParams.get('object-number'),
     };
     const api = await RijksMuseumDetailWrapper.load(params['object-number']!);
-    console.log(api.getDetails());
     return new Response(
         JSON.stringify({
             data: api.getDetails(),
